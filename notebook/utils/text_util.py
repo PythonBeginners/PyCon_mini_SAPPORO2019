@@ -41,3 +41,12 @@ def calc_text_ratio (text1:str, text2:str) -> float:
     if sum_length == 0:
         return 0.0
     return sum_score/sum_length
+
+# tesseractの出力したbox情報から複数行の文字列情報を作成する
+def concat_tesseract_boxes_result (tesseract_boxes):
+    result = ""
+    for box_index in range(len(tesseract_boxes)):
+        tesseract_box = tesseract_boxes[box_index]
+        result += tesseract_box.content
+        result += "\n"
+    return result    
